@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Laporan Keuangan</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1 class="brand">Laporan Keuangan</h1>
+    <nav class="tabs" role="tablist">
+      <button class="tab" data-view="dasbor" role="tab">Dasbor</button>
+      <button class="tab" data-view="transaksi" role="tab">Transaksi</button>
+      <button class="tab" data-view="laporan" role="tab">Laporan</button>
+      <button class="tab" data-view="pengaturan" role="tab">Pengaturan</button>
+    </nav>
+  </header>
+
+  <section class="period no-print" aria-label="Periode">
+    <label>Periode
+      <select id="period-preset">
+        <option value="month">Bulan ini</option>
+        <option value="last-month">Bulan lalu</option>
+        <option value="year">Tahun ini</option>
+        <option value="last-year">Tahun lalu</option>
+        <option value="all">Semua waktu</option>
+        <option value="custom">Kustom…</option>
+      </select>
+    </label>
+    <label>Dari <input type="date" id="period-from"></label>
+    <label>Sampai <input type="date" id="period-to"></label>
+    <span id="period-label" class="muted"></span>
+  </section>
+
+  <main>
+    <!-- DASBOR -->
+    <section id="view-dasbor" class="view" hidden>
+      <div class="tiles" id="tiles"></div>
+      <div class="grid-2">
+        <article class="card">
+          <h2>Pemasukan &amp; Pengeluaran per Bulan</h2>
+          <div id="chart-monthly" class="chart"></div>
+        </article>
+        <article class="card">
+          <h2>Pengeluaran per Kategori</h2>
+          <div id="chart-category" class="chart"></div>
+        </article>
+      </div>
+      <article class="card">
+        <div class="card-head">
+          <h2>Transaksi Terbaru</h2>
+          <button class="btn primary" data-action="new-tx">+ Transaksi</button>
+        </div>
+        <div id="recent-tx"></div>
+      </article>
+    </section>
+
+    <!-- TRANSAKSI -->
+    <section id="view-transaksi" class="view" hidden>
+      <article class="card">
+        <div class="card-head">
+          <h2>Daftar Transaksi</h2>
+          <div class="actions">
+            <button class="btn" id="export-csv">Ekspor CSV</button>
+            <button class="btn primary" data-action="new-tx">+ Transaksi</button>
+          </div>
+        </div>
+        <div class="filters">
+          <select id="f-type">
+            <option value="">Semua jenis</option>
+            <option value="pemasukan">Pemasukan</option>
+            <option value="pengeluaran">Pengeluaran</option>
+            <option value="transfer">Transfer</option>
+          </select>
+          <select id="f-account"></select>
+          <select id="f-category"></select>
+          <input type="search" id="f-q" placeholder="Cari keterangan…">
+        </div>
+        <div id="tx-table"></div>
+      </article>
+    </section>
+
+    <!-- LAPORAN -->
+    <section id="view-laporan" class="view" hidden>
+      <div class="card-head no-print">
+        <p class="muted">Laporan mengikuti periode yang dipilih di atas.</p>
+        <button class="btn" onclick="window.print()">Cetak / Simpan PDF</button>
+      </div>
+      <article class="card report">
+        <h2>Laporan Laba Rugi</h2>
+        <p class="muted report-period"></p>
+        <div id="report-pl"></div>
+      </article>
+      <article class="card report">
+        <h2>Laporan Arus Kas per Akun</h2>
+        <p class="muted report-period"></p>
+        <div id="report-cf"></div>
+      </article>
+      <article class="card report">
+        <h2>Ringkasan Bulanan</h2>
+        <p class="muted report-period"></p>
+        <div id="report-monthly"></div>
+      </article>
+    </section>
+
+    <!-- PENGATURAN -->
+    <section id="view-pengaturan" class="view" hidden>
+      <div class="grid-2">
+        <article class="card">
+          <h2>Akun Kas &amp; Bank</h2>
+          <div id="accounts-list"></div>
+          <form id="account-form" class="inline-form">
+            <input name="name" placeholder="Nama akun baru" required>
+            <input name="opening" placeholder="Saldo awal" inputmode="numeric">
+            <button class="btn primary">Tambah</button>
+          </form>
+        </article>
+        <article class="card">
+          <h2>Kategori</h2>
+          <div id="categories-list"></div>
+          <form id="category-form" class="inline-form">
+            <input name="name" placeholder="Nama kategori baru" required>
+            <select name="type">
+              <option value="pemasukan">Pemasukan</option>
+              <option value="pengeluaran">Pengeluaran</option>
+            </select>
+            <button class="btn primary">Tambah</button>
+          </form>
+        </article>
+      </div>
+      <article class="card">
+        <h2>Data</h2>
+        <p class="muted">Data tersimpan di browser ini (localStorage). Buat cadangan secara berkala.</p>
+        <div class="actions wrap">
+          <button class="btn" id="backup">Unduh Cadangan (JSON)</button>
+          <label class="btn">Pulihkan dari Cadangan<input type="file" id="restore" accept="application/json,.json" hidden></label>
+          <button class="btn" id="load-sample">Muat Data Contoh</button>
+          <button class="btn danger" id="reset">Hapus Semua Data</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Dialog transaksi -->
+  <dialog id="tx-dialog">
+    <form id="tx-form" method="dialog">
+      <h2 id="tx-dialog-title">Transaksi Baru</h2>
+      <div class="seg" role="radiogroup" aria-label="Jenis transaksi">
+        <label><input type="radio" name="type" value="pemasukan" checked> Pemasukan</label>
+        <label><input type="radio" name="type" value="pengeluaran"> Pengeluaran</label>
+        <label><input type="radio" name="type" value="transfer"> Transfer</label>
+      </div>
+      <label>Tanggal <input type="date" name="date" required></label>
+      <label>Jumlah (Rp) <input name="amount" inputmode="numeric" placeholder="cth. 1.500.000" required></label>
+      <label class="for-cat">Kategori <select name="categoryId"></select></label>
+      <label><span class="acc-label">Akun</span> <select name="accountId"></select></label>
+      <label class="for-transfer">Ke Akun <select name="toAccountId"></select></label>
+      <label>Keterangan <input name="description" maxlength="200"></label>
+      <p class="form-error" id="tx-error" role="alert"></p>
+      <div class="actions end">
+        <button type="button" class="btn" value="cancel" id="tx-cancel">Batal</button>
+        <button type="submit" class="btn primary" value="save">Simpan</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="tooltip" class="tooltip" hidden></div>
+  <div id="toast" class="toast" role="status" hidden></div>
+
+  <script src="js/finance.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

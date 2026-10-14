@@ -1,0 +1,11 @@
+{
+  "name": "alza-laporan-keuangan",
+  "version": "1.0.0",
+  "description": "Aplikasi laporan keuangan sederhana berbasis browser (tanpa server).",
+  "private": true,
+  "scripts": {
+    "test": "node --test",
+    "start": "python3 -m http.server 8000"
+  },
+  "license": "MIT"
+}
