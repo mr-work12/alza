@@ -1,0 +1,102 @@
+[
+  {
+    "type": "website",
+    "title": "SIMAK IMM",
+    "description": "Sistem Informasi Manajemen Kaderisasi untuk PK IMM FAI UM Bengkulu. Kader absen sendiri lewat login, dan absen hanya sah dalam radius 100 meter dari lokasi kegiatan. Kader yang tiga kali tidak hadir menerima pemberitahuan email. Aplikasi juga menyimpan data kader dan unggahan KTA IMM. Dibangun dengan Google Apps Script dan Google Sheets, di-host lewat Netlify, dan kodenya dikelola di GitHub.",
+    "media": "https://simak-pk-imm-fai-um-bengkulu.netlify.app",
+    "role": "Perancang & pengembang · Kabid Kader",
+    "year": "2026",
+    "category": "Web App",
+    "image": "./Asset/img/karya/simak.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Pesan Moderasi Beragama dalam Buku Relevansi Islam Wasathiyah",
+    "description": "Penelitian tentang pesan moderasi beragama dalam buku Relevansi Islam Wasathiyah karya Azyumardi Azra. Metodenya analisis isi kualitatif terhadap 14 esai yang dipilih secara purposif, dengan dua kerangka: empat indikator moderasi beragama Kemenag RI dan sepuluh karakter wasathiyah menurut Azra. Disusun sebagai artikel jurnal (target SINTA 4) dan proposal skripsi Prodi KPI.",
+    "media": "https://drive.google.com/file/d/1QzIF5j2zd5nlGkGlwIWOErBR_ZCOCn9l/view",
+    "role": "Penulis · Pembimbing: Eti Efrina",
+    "year": "2026",
+    "category": "Artikel",
+    "image": "./Asset/img/karya/moderasi.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Bersuara dengan Ilmu, Berdakwah dengan Media",
+    "description": "Rangkaian carousel dan pamflet promosi Prodi Komunikasi dan Penyiaran Islam FAI UM Bengkulu. Kontennya dibuka dengan pertanyaan reflektif tentang dakwah di era digital, lalu menunjukkan keterampilan yang dipelajari di KPI: public speaking, jurnalistik, broadcasting, fotografi dan videografi, serta dakwah kreatif. Dibuat di Canva.",
+    "media": "https://www.canva.com/d/WGHaSTZgd8vdcfg",
+    "role": "Penulis naskah & desainer konten",
+    "year": "2026",
+    "category": "Desain Dakwah",
+    "image": "./Asset/img/karya/kpi.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Dari Asmara Menuju Ikhlash",
+    "description": "Artikel ilmiah yang menganalisis sinematografi film pendek \"Cerita Hijrahku\" dan pesan dakwah tentang perubahan niat, dari motif asmara menuju keikhlasan. Penelitian deskriptif kualitatif dengan data berupa timecode, tangkapan layar adegan, dan studi pustaka.",
+    "media": "https://drive.google.com/file/d/1ycBhano3Pv2-h1SY_RpAPKbTtV4xKaKq/view",
+    "role": "Penulis",
+    "year": "2026",
+    "category": "Artikel",
+    "image": "./Asset/img/karya/sinematografi.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Syiar Ramadhan 1446 H",
+    "description": "Artikel KKN Mubaligh Hijrah tentang peran Pimpinan Cabang Muhammadiyah Singaran Pati dalam membina umat selama bulan suci Ramadhan 1446 H. Disusun untuk jurnal JIMAKUKERTA bersama dosen pembimbing Drs. Nazar, M.Ag.",
+    "media": "",
+    "role": "Penulis",
+    "year": "2025",
+    "category": "Artikel",
+    "image": "./Asset/img/karya/kkn.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Certified Professional Human Resources Management (CPHRM)",
+    "description": "Sertifikasi intensif CPHRM Batch 29 yang diselenggarakan CeritaKerja.id secara online. Lulus dengan predikat B dan nilai 85,47. Materinya meliputi rekrutmen, analisis jabatan, penilaian kinerja, training need analysis, hingga perhitungan BPJS. ID Credential: 20260923-11.",
+    "media": "https://drive.google.com/file/d/1eBxteWRKu-5eaFESAaYJ0OXbhcdDuzDy/view",
+    "role": "Peserta sertifikasi",
+    "year": "2026",
+    "category": "Sertifikasi",
+    "image": "./Asset/img/karya/cphrm.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Sertifikat Kompetensi BNSP: Pemasaran Digital",
+    "description": "Dinyatakan kompeten di bidang Pemasaran Digital (Digital Marketing) oleh Badan Nasional Sertifikasi Profesi melalui LSP Teknologi Digital. Uji kompetensi ini bagian dari Program Sinergi Edukasi Publik Bank Indonesia di UM Bengkulu, 6–8 Agustus 2025. Sertifikat berlaku 3 tahun.",
+    "media": "https://drive.google.com/file/d/1z5ta_DLD0RkpbXTw0PxIKioKyxHZPreK/view",
+    "role": "Peserta uji kompetensi",
+    "year": "2025",
+    "category": "Sertifikasi",
+    "image": "./Asset/img/karya/bnsp.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Wasit Panahan Tradisional Tingkat Kota",
+    "description": "Mengikuti Pelatihan Wasit Tingkat Kota dan lulus uji kecakapan Ilmu Dasar Perwasitan Panahan Tradisional yang diselenggarakan PANAH INDONESIA Pengurus Kota Bengkulu pada 22 Agustus 2026. Nomor sertifikat 007/SRT/P3-WST/VIII/2026, ditandatangani Ketua Panah Indonesia Kota Bengkulu, Deddy Intansyah Ekaputra.",
+    "media": "./Asset/img/sertifikat/wasit.jpg",
+    "role": "Wasit panahan tradisional",
+    "year": "2026",
+    "category": "Sertifikasi",
+    "image": "./Asset/img/karya/panahan-wasit.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Pelatih Panahan Tradisional Tingkat Kota",
+    "description": "Mengikuti Pelatihan Pelatih Tingkat Kota dan lulus uji kecakapan Ilmu Dasar Kepelatihan Panahan Tradisional yang diselenggarakan PANAH INDONESIA Pengurus Kota Bengkulu pada 22 Agustus 2026. Nomor sertifikat 007/SRT/P3-PLT/VIII/2026, ditandatangani Ketua Panah Indonesia Kota Bengkulu, Deddy Intansyah Ekaputra.",
+    "media": "./Asset/img/sertifikat/pelatih.jpg",
+    "role": "Pelatih panahan tradisional",
+    "year": "2026",
+    "category": "Sertifikasi",
+    "image": "./Asset/img/karya/panahan-pelatih.jpg"
+  },
+  {
+    "type": "image",
+    "title": "Kualifikasi Lengkap untuk Administrasi Perkantoran",
+    "description": "Menyelesaikan kursus Kualifikasi Lengkap untuk Administrasi Perkantoran di Kelas.com bersama instruktur Maman Tadarusman, S.E., CH., CHT. Materinya 11 bagian: dasar-dasar admin, kualifikasi admin, sistem administrasi perkantoran, tugas admin di berbagai bidang, pengarsipan, komunikasi, alur koordinasi, penerimaan dan pengiriman dokumen, serta penyusunan dan pembuatan dokumen. Durasi 1 jam 42 menit. ID sertifikat: CERT-BC1EDC1C, terbit 19 September 2026.",
+    "media": "./Asset/img/sertifikat/administrasi.jpg",
+    "role": "Peserta kursus",
+    "year": "2026",
+    "category": "Sertifikasi",
+    "image": "./Asset/img/karya/administrasi.jpg"
+  }
+]

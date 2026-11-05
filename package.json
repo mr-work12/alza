@@ -1,0 +1,20 @@
+{
+  "name": "alzawan-portfolio",
+  "version": "2.0.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "start": "node live_preview.js",
+    "check": "node scripts/check.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "lucide-react": "^0.468.0"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
