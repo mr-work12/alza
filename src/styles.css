@@ -49,3 +49,9 @@ html[data-motion=off]{scroll-behavior:auto}html[data-motion=off] *,html[data-mot
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition-duration:.01ms!important}}
 @media(max-width:600px){.hero-title{font-size:23.8vw}.hero-side{bottom:285px}}
 @media(max-width:370px){.hero-side{bottom:280px}}
+
+.hero-intro h1.hero-name{font-size:clamp(44px,4.6vw,84px);line-height:.95}
+@media(max-width:1100px){.hero-intro h1.hero-name{font-size:52px}}
+@media(max-width:800px){.hero-intro h1.hero-name{font-size:50px}}
+@media(max-width:600px){.hero-intro h1.hero-name{font-size:46px;line-height:1}}
+@media(max-width:370px){.hero-intro h1.hero-name{font-size:40px}}
