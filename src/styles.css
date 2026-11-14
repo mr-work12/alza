@@ -59,3 +59,18 @@ html[data-motion=off]{scroll-behavior:auto}html[data-motion=off] *,html[data-mot
 .wordmark .wm-degree{color:var(--red);font-weight:inherit;white-space:nowrap}
 .wordmark{white-space:nowrap}
 @media(max-width:600px){.site-header .wordmark .wm-degree{display:none}}
+
+.ar{font-family:'Amiri','Traditional Arabic','Noto Naskh Arabic',serif;direction:rtl;font-weight:400;letter-spacing:0}
+.dalil{display:grid;gap:6px;margin:22px 0 0;max-width:520px}
+.dalil .ar{font-size:clamp(22px,2vw,30px);line-height:1.9;color:var(--ink);text-align:right;margin:0}
+.dalil figcaption{font-size:13px;line-height:1.6;color:var(--muted)}
+.dalil cite{font-style:normal;color:var(--red);font-weight:700;letter-spacing:.06em;font-size:11px;text-transform:uppercase;white-space:nowrap}
+.ar-manifesto{font-size:20px;line-height:1.6;color:var(--ink);margin:6px 0 0;text-align:right}
+.ar-quote{font-size:clamp(20px,1.7vw,26px);line-height:1.9;color:var(--ink);margin:0 0 10px;text-align:right;opacity:.92}
+.ar-small{display:block;font-size:22px;line-height:1.5;margin-bottom:4px;text-align:left;direction:rtl;unicode-bidi:isolate}
+@media(max-width:600px){.dalil .ar{font-size:22px}.ar-quote{font-size:21px}}
+.quote-panel .ar-quote{grid-column:1/-1;order:-1;z-index:1;align-self:stretch}
+.hero-manifesto{flex-wrap:wrap}
+.hero-manifesto .ar-manifesto{flex-basis:100%;text-align:left;font-size:19px;margin:2px 0 0}
+@media(max-width:600px){.quote-panel{grid-template-columns:30px 1fr 96px}.quote-panel>.handwriting{font-size:21px;line-height:1.05}}
+@media(max-width:370px){.quote-panel{grid-template-columns:25px 1fr 84px}.quote-panel>.handwriting{font-size:19px}}
