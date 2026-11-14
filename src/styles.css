@@ -55,3 +55,7 @@ html[data-motion=off]{scroll-behavior:auto}html[data-motion=off] *,html[data-mot
 @media(max-width:800px){.hero-intro h1.hero-name{font-size:50px}}
 @media(max-width:600px){.hero-intro h1.hero-name{font-size:46px;line-height:1}}
 @media(max-width:370px){.hero-intro h1.hero-name{font-size:40px}}
+.hero-intro h1.hero-name .hero-degree{font-size:.42em;color:var(--red);letter-spacing:.02em;vertical-align:.12em}
+.wordmark .wm-degree{color:var(--red);font-weight:inherit;white-space:nowrap}
+.wordmark{white-space:nowrap}
+@media(max-width:600px){.site-header .wordmark .wm-degree{display:none}}

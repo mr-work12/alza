@@ -88,7 +88,7 @@ function Header({ enabled, onToggle }) {
     window.addEventListener('keydown', onKey); return () => window.removeEventListener('keydown', onKey);
   }, []);
   return <header className="site-header">
-    <a className="wordmark" href="#home" aria-label="M. Alzawan Saputra, beranda">M. ALZAWAN SAPUTRA<span>.</span></a>
+    <a className="wordmark" href="#home" aria-label="M. Alzawan Saputra, CPHRM, beranda">M. ALZAWAN SAPUTRA<b className="wm-degree">, CPHRM</b></a>
     <nav className="desktop-nav" aria-label="Navigasi utama">{[['portfolio', 'Karya'], ['awards', 'Sertifikasi'], ['about', 'Tentang'], ['experience', 'Perjalanan'], ['contact', 'Kontak']].map(([id, label]) => <a key={id} href={`#${id}`} className={active === id ? 'active' : ''}>{label}</a>)}</nav>
     <div className="header-actions"><button className="motion-toggle" onClick={onToggle} aria-label={enabled ? 'Jeda animasi' : 'Aktifkan animasi'} aria-pressed={!enabled}>{enabled ? <Pause size={13} /> : <Play size={13} />}<span>Motion {enabled ? 'on' : 'off'}</span></button><a className="header-contact" href="#contact">Let’s talk <ArrowUpRight size={16} /></a><button className="menu-toggle icon-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Tutup menu' : 'Buka menu'}>{open ? <X /> : <Menu />}</button></div>
     <AnimatePresence>{open && <motion.nav id="mobile-menu" className="mobile-menu" aria-label="Navigasi mobile" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}>{[['home', 'Beranda'], ['portfolio', 'Karya'], ['awards', 'Sertifikasi'], ['about', 'Tentang'], ['experience', 'Perjalanan'], ['contact', 'Kontak']].map(([id, label], i) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)}><span>0{i + 1}</span>{label}<ArrowUpRight size={18} /></a>)}</motion.nav>}</AnimatePresence>
@@ -108,7 +108,7 @@ function Hero({ onProject }) {
     <motion.div className="hero-title display" aria-hidden="true" style={enabled ? { y: titleY } : {}} initial={enabled ? { clipPath: 'inset(0 0 100% 0)' } : false} animate={{ clipPath: 'inset(0 0 0% 0)' }} transition={{ duration: 1.4, ease: EASE }}>PORTFOLIO</motion.div>
     <motion.div className="hero-portrait" style={enabled ? { y: portraitY, scale: portraitScale } : {}} initial={enabled ? { opacity: 0 } : false} animate={{ opacity: 1 }} transition={{ duration: 1.2, delay: 0.2 }}><img src="./Asset/img/alzawan-portrait.png" alt="M. Alzawan Saputra mengenakan blazer merah marun IMM dengan pencahayaan studio merah" width="1024" height="1536" fetchPriority="high" /></motion.div>
     <motion.div className="hero-intro" style={enabled ? { y: copyY } : {}} initial={enabled ? { opacity: 0, x: -35 } : false} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, delay: 0.35, ease: EASE }}>
-      <p className="handwriting">Hello, I’m</p><h1 className="display hero-name">M. ALZAWAN<br />SAPUTRA<span>.</span></h1><p className="hero-role">KOMUNIKATOR & <br />PENGGERAK DAKWAH</p><p className="hero-description">Bersuara dengan ilmu. Berdakwah dengan media.<br />Saya menulis, merancang konten dakwah, membangun sistem organisasi, dan menyampaikan gagasan.</p>
+      <p className="handwriting">Hello, I’m</p><h1 className="display hero-name">M. ALZAWAN<br />SAPUTRA<span>,</span> <small className="hero-degree">CPHRM</small></h1><p className="hero-role">KOMUNIKATOR & <br />PENGGERAK DAKWAH</p><p className="hero-description">Bersuara dengan ilmu. Berdakwah dengan media.<br />Saya menulis, merancang konten dakwah, membangun sistem organisasi, dan menyampaikan gagasan.</p>
       <Magnetic href="#portfolio" className="primary-link">Lihat karya saya <ArrowDown size={17}/></Magnetic>
       <span className="hero-location"><MapPin size={12} /> BENGKULU, INDONESIA</span>
     </motion.div>
@@ -233,11 +233,11 @@ function About() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 75%', 'end 75%'] });
   return <section id="about" className="about section-wrap" ref={ref}>
-    <Reveal className="about-lead"><div><span className="eyebrow">02 / BEHIND THE FRAMES</span><h2 className="display">BUKAN SEKADAR BICARA.<br/>TAPI CARA <span className="accent">MENYAMPAIKAN.</span></h2></div><p>Saya M. Alzawan Saputra, mahasiswa Komunikasi dan Penyiaran Islam di Universitas Muhammadiyah Bengkulu. Saya bergerak di antara tulisan ilmiah, konten dakwah, dan organisasi, dengan minat pada ideologi, teologi, buku, dan pengembangan kader.</p></Reveal>
+    <Reveal className="about-lead"><div><span className="eyebrow">02 / BEHIND THE FRAMES</span><h2 className="display">BUKAN SEKADAR BICARA.<br/>TAPI CARA <span className="accent">MENYAMPAIKAN.</span></h2></div><p>Saya M. Alzawan Saputra, CPHRM, mahasiswa Komunikasi dan Penyiaran Islam di Universitas Muhammadiyah Bengkulu. Saya bergerak di antara tulisan ilmiah, konten dakwah, dan organisasi, dengan minat pada ideologi, teologi, buku, dan pengembangan kader.</p></Reveal>
     <div className="studio-grid">
       <Reveal className="education-panel"><h3 className="panel-heading">EDUCATION & SKILLS</h3><p className="eyebrow accent">PENDIDIKAN</p><div className="education-row"><strong>Universitas Muhammadiyah Bengkulu</strong><span>2023 – sekarang</span><p>S1 Komunikasi dan Penyiaran Islam, Fakultas Agama Islam.</p></div><div className="education-row"><strong>SMKN 8 Kaur</strong><span>2020 – 2023</span><p>Pendidikan menengah kejuruan.</p></div><div className="education-row"><strong>Sertifikasi & Pelatihan</strong><p>CPHRM CeritaKerja.id · BNSP Pemasaran Digital · Administrasi Perkantoran (Kelas.com) · Wasit & Pelatih Panahan Tradisional</p></div><p className="eyebrow accent skills-heading">KEAHLIAN & ALAT KERJA</p><div className="skill-tags">{['Public Speaking', 'Penulisan Ilmiah', 'Analisis Isi', 'Konten Dakwah', 'Digital Marketing', 'Manajemen SDM', 'Administrasi Organisasi', 'Web App Apps Script', 'Panahan Tradisional'].map(s => <span key={s}>{s}</span>)}</div><div className="software-row">{[['cv', 'Canva'], ['wd', 'Microsoft Word'], ['gs', 'Google Sheets'], ['as', 'Google Apps Script'], ['gh', 'GitHub'], ['nt', 'Netlify']].map(([file, name]) => <img key={file} src={`./Asset/svg/${file}.svg`} alt={name} title={name} loading="lazy" width="28" height="28"/>)}</div></Reveal>
       <div className="process-panel"><Reveal><h3 className="panel-heading">DARI GAGASAN KE DAMPAK</h3></Reveal><div className="process-list"><div className="process-track"><motion.div style={{ scaleY: enabled ? scrollYProgress : 1 }}/></div>{processSteps.map(([num, title, text], i) => <Reveal key={num} className="process-row" delay={i * 0.035}><span className="process-num display">{num}</span><span className="process-node"/><div><h4>{title}</h4><p>{text}</p></div></Reveal>)}</div></div>
-      <Reveal className="quote-panel"><span className="quote-mark display">“</span><blockquote>Bersuara <br/>dengan ilmu, <br/><em>berdakwah <br/>dengan media.</em></blockquote><span className="handwriting">M. Alzawan Saputra</span><div className="quote-bottom">FASTABIQUL<br/>KHAIRAT.<span className="quote-symbol" aria-hidden="true">✳</span></div></Reveal>
+      <Reveal className="quote-panel"><span className="quote-mark display">“</span><blockquote>Bersuara <br/>dengan ilmu, <br/><em>berdakwah <br/>dengan media.</em></blockquote><span className="handwriting">M. Alzawan Saputra, CPHRM</span><div className="quote-bottom">FASTABIQUL<br/>KHAIRAT.<span className="quote-symbol" aria-hidden="true">✳</span></div></Reveal>
     </div>
   </section>;
 }
@@ -345,8 +345,8 @@ function App() {
         <Contact onProject={setProject}/>
       </main>
       <footer className="footer">
-        <a className="wordmark" href="#home">M. ALZAWAN SAPUTRA<span>.</span></a>
-        <span>© {new Date().getFullYear()} M. ALZAWAN SAPUTRA. BERSUARA DENGAN ILMU.</span>
+        <a className="wordmark" href="#home">M. ALZAWAN SAPUTRA<b className="wm-degree">, CPHRM</b></a>
+        <span>© {new Date().getFullYear()} M. ALZAWAN SAPUTRA, CPHRM. BERSUARA DENGAN ILMU.</span>
         <div>
           <a href="mailto:alzakaur123456@gmail.com" aria-label="Email M. Alzawan Saputra"><Mail size={17}/></a>
           <a href="https://wa.me/6282282309083" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp M. Alzawan Saputra"><Phone size={17}/></a>
