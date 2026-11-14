@@ -74,3 +74,24 @@ html[data-motion=off]{scroll-behavior:auto}html[data-motion=off] *,html[data-mot
 .hero-manifesto .ar-manifesto{flex-basis:100%;text-align:left;font-size:19px;margin:2px 0 0}
 @media(max-width:600px){.quote-panel{grid-template-columns:30px 1fr 96px}.quote-panel>.handwriting{font-size:21px;line-height:1.05}}
 @media(max-width:370px){.quote-panel{grid-template-columns:25px 1fr 84px}.quote-panel>.handwriting{font-size:19px}}
+/* CV section */
+.cv-section{border-top:1px solid var(--line)}
+.cv-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:clamp(28px,5vw,80px);align-items:center}
+.cv-lead{font-size:clamp(15px,1.25vw,18px);line-height:1.6;color:var(--ink);max-width:520px;margin:0 0 26px}
+.cv-highlights{display:grid;gap:0;margin:0 0 30px;border-top:1px solid var(--line)}
+.cv-highlights div{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cv-highlights dt{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--red);font-weight:700;padding-top:3px}
+.cv-highlights dd{margin:0;font-size:14px;line-height:1.55;color:var(--muted)}
+.cv-actions{display:flex;flex-wrap:wrap;gap:12px}
+.cv-button{display:inline-flex;align-items:center;gap:10px;min-height:46px;padding:0 20px;border:1px solid var(--line);font-size:13px;font-weight:600;color:var(--ink);transition:border-color .2s,background .2s}
+.cv-button:hover,.cv-button:focus-visible{border-color:var(--red)}
+.cv-button.primary{background:var(--red);border-color:var(--red);color:#fff}
+.cv-button.primary:hover,.cv-button.primary:focus-visible{background:var(--red-dark)}
+.cv-paper-wrap{display:flex;justify-content:center}
+.cv-paper{position:relative;display:block;width:min(100%,460px);background:#fff;box-shadow:0 30px 80px #000a,0 0 0 1px #ffffff14;transform:rotate(1.5deg);transition:transform .35s ease}
+.cv-paper:hover,.cv-paper:focus-visible{transform:rotate(0) translateY(-6px)}
+.cv-paper img{display:block;width:100%;height:auto}
+.cv-paper-hint{position:absolute;right:14px;bottom:14px;display:inline-flex;align-items:center;gap:6px;padding:8px 12px;background:#090909e6;color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em}
+@media(max-width:800px){.cv-grid{grid-template-columns:1fr}.cv-paper{transform:none;width:min(100%,420px)}}
+@media(max-width:600px){.cv-highlights div{grid-template-columns:1fr;gap:4px}}
+@media(prefers-reduced-motion:reduce){.cv-paper,.cv-paper:hover{transition:none;transform:none}}

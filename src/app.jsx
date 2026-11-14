@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useContext, createContext } from 'react';
 import { createRoot } from 'react-dom/client';
 import { motion, AnimatePresence, MotionConfig, useScroll, useTransform, useSpring, useReducedMotion, useMotionValueEvent, useAnimationFrame, useInView } from 'framer-motion';
-import { ArrowUpRight, ArrowDown, ArrowRight, Play, X, Menu, Mail, Phone, MapPin, Instagram, Youtube, Download, Pause, Search, Plus, Minus, ChevronLeft, ChevronRight, ExternalLink } from 'lucide-react';
+import { ArrowUpRight, ArrowDown, ArrowRight, Play, X, Menu, Mail, Phone, MapPin, Instagram, Youtube, Download, Pause, Search, Plus, Minus, ChevronLeft, ChevronRight, ExternalLink, Eye } from 'lucide-react';
 import archive from './data/projects.json';
 import brands from './data/brands.json';
 import './styles.css';
@@ -93,9 +93,9 @@ function Header({ enabled, onToggle }) {
   }, []);
   return <header className="site-header">
     <a className="wordmark" href="#home" aria-label="M. Alzawan Saputra, CPHRM, beranda">M. ALZAWAN SAPUTRA<b className="wm-degree">, CPHRM</b></a>
-    <nav className="desktop-nav" aria-label="Navigasi utama">{[['portfolio', 'Karya'], ['awards', 'Sertifikasi'], ['about', 'Tentang'], ['experience', 'Perjalanan'], ['contact', 'Kontak']].map(([id, label]) => <a key={id} href={`#${id}`} className={active === id ? 'active' : ''}>{label}</a>)}</nav>
+    <nav className="desktop-nav" aria-label="Navigasi utama">{[['portfolio', 'Karya'], ['awards', 'Sertifikasi'], ['about', 'Tentang'], ['experience', 'Perjalanan'], ['cv', 'CV'], ['contact', 'Kontak']].map(([id, label]) => <a key={id} href={`#${id}`} className={active === id ? 'active' : ''}>{label}</a>)}</nav>
     <div className="header-actions"><button className="motion-toggle" onClick={onToggle} aria-label={enabled ? 'Jeda animasi' : 'Aktifkan animasi'} aria-pressed={!enabled}>{enabled ? <Pause size={13} /> : <Play size={13} />}<span>Motion {enabled ? 'on' : 'off'}</span></button><a className="header-contact" href="#contact">Let’s talk <ArrowUpRight size={16} /></a><button className="menu-toggle icon-button" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Tutup menu' : 'Buka menu'}>{open ? <X /> : <Menu />}</button></div>
-    <AnimatePresence>{open && <motion.nav id="mobile-menu" className="mobile-menu" aria-label="Navigasi mobile" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}>{[['home', 'Beranda'], ['portfolio', 'Karya'], ['awards', 'Sertifikasi'], ['about', 'Tentang'], ['experience', 'Perjalanan'], ['contact', 'Kontak']].map(([id, label], i) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)}><span>0{i + 1}</span>{label}<ArrowUpRight size={18} /></a>)}</motion.nav>}</AnimatePresence>
+    <AnimatePresence>{open && <motion.nav id="mobile-menu" className="mobile-menu" aria-label="Navigasi mobile" initial={{ opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -12 }}>{[['home', 'Beranda'], ['portfolio', 'Karya'], ['awards', 'Sertifikasi'], ['about', 'Tentang'], ['experience', 'Perjalanan'], ['cv', 'CV'], ['contact', 'Kontak']].map(([id, label], i) => <a key={id} href={`#${id}`} onClick={() => setOpen(false)}><span>0{i + 1}</span>{label}<ArrowUpRight size={18} /></a>)}</motion.nav>}</AnimatePresence>
   </header>;
 }
 
@@ -255,6 +255,28 @@ function Journey({ onProject }) {
   </section>;
 }
 
+const CV_PDF = './Asset/cv/CV_M_Alzawan_Saputra.pdf';
+const cvHighlights = [
+  ['Pendidikan', 'S1 Komunikasi dan Penyiaran Islam, UM Bengkulu (2023 – sekarang)'],
+  ['Organisasi', 'Kabid Kader PK IMM FAI · Kabid Tabligh KOMPAQ · Sekretaris Hijrah Community'],
+  ['Kegiatan', 'Ketua Panitia PKKMB FAI 2026 · PKL Rumah Singgah Al Ma’un · KKN Mubaligh Hijrah'],
+  ['Sertifikasi', 'CPHRM · BNSP Pemasaran Digital · Administrasi Perkantoran · Wasit & Pelatih Panahan'],
+];
+
+function CvSection() {
+  return <section id="cv" className="cv-section section-wrap">
+    <Reveal className="section-heading"><div><span className="eyebrow">04 / CURRICULUM VITAE</span><h2>RINGKAS. JELAS. SIAP DIBACA<span className="accent">.</span></h2></div><a className="text-link" href={CV_PDF} target="_blank" rel="noopener noreferrer">UNDUH CV<Download size={16}/></a></Reveal>
+    <div className="cv-grid">
+      <Reveal className="cv-info">
+        <p className="cv-lead">CV satu halaman yang merangkum pendidikan, organisasi, kegiatan, karya, dan sertifikasi M. Alzawan Saputra, CPHRM.</p>
+        <dl className="cv-highlights">{cvHighlights.map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
+        <div className="cv-actions"><a className="cv-button primary" href={CV_PDF} target="_blank" rel="noopener noreferrer"><Eye size={16}/>Lihat CV</a><a className="cv-button" href={CV_PDF} target="_blank" rel="noopener noreferrer"><Download size={16}/>Unduh PDF</a></div>
+      </Reveal>
+      <Reveal className="cv-paper-wrap"><a className="cv-paper" href={CV_PDF} target="_blank" rel="noopener noreferrer" aria-label="Buka CV M. Alzawan Saputra dalam PDF"><img src="./Asset/cv/cv-preview.jpg" alt="Halaman CV M. Alzawan Saputra, CPHRM" loading="lazy" width="1075" height="1521"/><span className="cv-paper-hint"><ArrowUpRight size={16}/>Buka PDF</span></a></Reveal>
+    </div>
+  </section>;
+}
+
 function Contact({ onProject }) {
   const [sent, setSent] = useState(false);
   const send = e => {
@@ -266,7 +288,7 @@ function Contact({ onProject }) {
     try { window.open(url, '_blank', 'noopener,noreferrer'); } catch {}
   };
   return <section id="contact" className="contact section-wrap">
-    <div className="contact-grid"><Reveal className="contact-intro"><span className="eyebrow">04 / YOUR NEXT STORY</span><h2 className="display">LET’S WORK<br/>TOGETHER<span className="accent">.</span></h2><p>Punya gagasan, kegiatan, atau tulisan yang ingin diwujudkan?<br/>Mari kerjakan sesuatu yang bermanfaat.</p><Dalil className="dalil-contact" ar="خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ" text="Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia." source="HR. Ath-Thabrani"/><Magnetic href="https://wa.me/6282282309083" target="_blank" rel="noopener noreferrer" className="contact-cta"><span className="round-arrow"><ArrowUpRight size={21}/></span>MULAI PERCAKAPAN</Magnetic></Reveal>
+    <div className="contact-grid"><Reveal className="contact-intro"><span className="eyebrow">05 / YOUR NEXT STORY</span><h2 className="display">LET’S WORK<br/>TOGETHER<span className="accent">.</span></h2><p>Punya gagasan, kegiatan, atau tulisan yang ingin diwujudkan?<br/>Mari kerjakan sesuatu yang bermanfaat.</p><Dalil className="dalil-contact" ar="خَيْرُ النَّاسِ أَنْفَعُهُمْ لِلنَّاسِ" text="Sebaik-baik manusia adalah yang paling bermanfaat bagi manusia." source="HR. Ath-Thabrani"/><Magnetic href="https://wa.me/6282282309083" target="_blank" rel="noopener noreferrer" className="contact-cta"><span className="round-arrow"><ArrowUpRight size={21}/></span>MULAI PERCAKAPAN</Magnetic></Reveal>
     <Reveal className="contact-links" delay={0.1}><a href="mailto:alzakaur123456@gmail.com"><Mail/><span><small>EMAIL</small>alzakaur123456@gmail.com</span><ArrowUpRight size={16}/></a><a href="https://simak-pk-imm-fai-um-bengkulu.netlify.app" target="_blank" rel="noopener noreferrer"><ExternalLink/><span><small>KARYA / WEB APP</small>SIMAK IMM</span><ArrowUpRight size={16}/></a><a href="tel:+6282282309083"><Phone/><span><small>PHONE / WHATSAPP</small>+62 822-8230-9083</span><ArrowUpRight size={16}/></a><div><MapPin/><span><small>BASED IN</small>Bengkulu, Indonesia</span></div></Reveal>
     <Reveal className="contact-reel" delay={0.2}><button onClick={() => onProject(featured[0])} aria-label="Buka karya unggulan SIMAK IMM"><div className="reel-screen"><span className="reel-screen-top">M. ALZAWAN SAPUTRA<span>KARYA UNGGULAN</span></span><MediaImage src="./Asset/img/karya/reel.jpg" alt="SIMAK IMM, karya unggulan M. Alzawan Saputra"/><span className="reel-screen-title display">BUILT TO<br/><span>SERVE.</span></span><span className="play-circle"><Play size={18} fill="currentColor"/></span></div><span className="reel-caption">BUKA KARYA. LIHAT PROSESNYA.</span></button></Reveal></div>
     <Reveal><details className="project-brief"><summary>Ceritakan keperluan Anda <Plus size={19}/></summary><form onSubmit={send}><label>Nama Anda<input name="name" required placeholder="Nama atau instansi" autoComplete="name" maxLength="100"/></label><label>Keperluan<select name="type"><option>Penulisan & artikel</option><option>Konten & desain dakwah</option><option>Pembuatan web app organisasi</option><option>Pemateri / narasumber</option><option>Kolaborasi organisasi</option><option>Lainnya</option></select></label><label className="brief-message">Detail keperluan<textarea name="message" required rows="3" placeholder="Ceritakan kegiatan, kebutuhan, dan perkiraan waktunya…" maxLength="3000"/></label><button className="solid-button" type="submit">Lanjut ke WhatsApp <ArrowUpRight size={18}/></button><p className="form-note" role="status">{sent ? <>Draft pesan sudah siap. Jika WhatsApp belum terbuka, <a href={sent} target="_blank" rel="noopener noreferrer" style={{color:'var(--red)',textDecoration:'underline'}}>buka WhatsApp di sini</a>, lalu tekan Kirim.</> : 'Brief akan dibuka sebagai draft pesan di WhatsApp.'}</p></form></details></Reveal>
@@ -346,6 +368,7 @@ function App() {
         <Awards onProject={setProject}/>
         <About/>
         <Journey onProject={setProject}/>
+        <CvSection/>
         <Contact onProject={setProject}/>
       </main>
       <footer className="footer">
